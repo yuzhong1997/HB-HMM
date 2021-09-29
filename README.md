@@ -1,5 +1,5 @@
 # HB-HMM
-Extract the candidates of SNPs caused by deletion/LOH using HMM model
+Extract the candidates of SNPs caused by deletion/LOH events using HMM model
 
 ## load sample data sets
 ```
@@ -27,7 +27,7 @@ allele_plot <- plotAlleleProfile(r.sub = allele_matrix$alter_less_sc,
                                  snps = allele_matrix$snps)
 ```
 
-## extract the candidates of SNPs affected by deletion/LOH using HMM
+## extract the candidates of continuous SNPs using HMM
 ```
 allele_HMM <- calAlleleBoundaries(r.sub = allele_matrix$alter_less_sc, 
                                   n.sc.sub = allele_matrix$cov_sc)
