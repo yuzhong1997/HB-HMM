@@ -304,6 +304,7 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
   }
   
   plist <- lapply(chrs, function(chr) {
+    #browser()
     vi <- grepl(paste0('^',chr,':'), rownames(r.tot))
     m <- melt(t(r.tot[vi,]))
     colnames(m) <- c('cell', 'snp', 'alt.frac')
@@ -318,12 +319,13 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
     n$coverage[n$coverage==0] <- NA # if no coverage, just don't show
     dat <- cbind(m, coverage=n$coverage)
     
-    p <- ggplot(dat, aes(snp, cell)) +
+    p1 <- ggplot(dat, aes(snp, cell)) +
       ## geom_tile(alpha=0) +
       geom_point(aes(colour = alt.frac, size = coverage), na.rm=TRUE) +
       scale_size_continuous(range = c(0, max.ps)) +
       ## scale_colour_gradientn(colours = rainbow(10)) +
       scale_colour_gradient2(mid="yellow", low = "turquoise", high = "red", midpoint=0.5) +
+      ylab("Cell") + 
       theme(
         panel.grid.major = element_blank(),
         panel.grid.minor = element_blank(),
@@ -348,7 +350,32 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
     ##     legend.position="bottom"
     ##     ##panel.margin=unit(0 , "lines")
     ## )
-    return(p)
+    
+    p2 <- ggplot(dat, aes(snp, alt.frac), na.rm=TRUE) +
+      geom_point(aes(size = coverage), na.rm=TRUE) +
+      scale_size_continuous(range = c(0, max.ps)) +
+      geom_hline(yintercept=0.9, linetype="dashed", 
+                 color = "red", size=1) +
+      geom_hline(yintercept=0.1, linetype="dashed", 
+                 color = "red", size=1) +
+      ylab("B Allele frequency") + 
+      theme(
+        panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.text.x=element_blank(),
+        axis.title.x=element_blank(),
+        axis.ticks.x=element_blank(),
+        axis.text.y=element_blank(),
+        axis.title.y=element_blank(),
+        axis.ticks.y=element_blank(),
+        legend.position="none",
+        plot.margin=unit(c(0,0,0,0), "cm"),
+        panel.border = element_rect(fill = NA, linetype = "solid", colour = "black")
+      )
+  
+    p3 <- grid.arrange(p1,p2)
+    return(p3)
   })
   
   if(returnPlot) {
