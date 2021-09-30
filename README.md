@@ -17,7 +17,6 @@ source("HMM_code.R")
 allele_matrix <- setAlleleMatrix(alter_sc = r, cov_sc = cov.sc, 
                                  het.deviance.threshold = 0.1, verbose = TRUE)
 ```
-
 ## plot allele-based information
 ```
 allele_plot <- plotAlleleProfile(r.sub = allele_matrix$alter_less_sc, 

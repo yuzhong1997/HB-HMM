@@ -94,13 +94,15 @@ setAlleleMatrix <- function(alter_sc, cov_sc,
                GenomicRanges::GRanges(chr, 
                                       IRanges::IRanges(as.numeric(as.character(start)), 
                                                        as.numeric(as.character(end)))))
-  names(snps) <- rownames(alter_less_sc) <- names(alter_less_bulk) <- rownames(cov_sc) <- names(cov_bulk) <- apply(snps.df, 1, paste0, collapse=":")
+  names(snps) <- rownames(alter_sc) <- names(alter_bulk) <- rownames(alter_less_sc) <- names(alter_less_bulk) <- rownames(cov_sc)  <- names(cov_bulk) <- apply(snps.df, 1, paste0, collapse=":")
   
   if(verbose) {
     cat("Done setting initial allele matrices! \n")
   }
   
-  return(list("alter_less_sc" = alter_less_sc,
+  return(list("alter_sc" = alter_sc,
+              "alter_bulk" = alter_bulk,
+              "alter_less_sc" = alter_less_sc,
               "alter_less_bulk" = alter_less_bulk,
               "cov_sc" = cov_sc,
               "cov_bulk" = cov_bulk,
@@ -352,11 +354,15 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
     ## )
     
     p2 <- ggplot(dat, aes(snp, alt.frac), na.rm=TRUE) +
+      #stat_density_2d(geom = "point", aes(size = ..density..), n = 30, contour = FALSE, na.rm=TRUE) +
       geom_point(aes(size = coverage), na.rm=TRUE) +
+      #geom_hex(na.rm=TRUE) +
       scale_size_continuous(range = c(0, max.ps)) +
-      geom_hline(yintercept=0.9, linetype="dashed", 
+      geom_hline(yintercept=2/3, linetype="dashed", 
                  color = "red", size=1) +
-      geom_hline(yintercept=0.1, linetype="dashed", 
+      #geom_hline(yintercept=0.5, linetype="dashed", 
+      #           color = "red", size=1) +
+      geom_hline(yintercept=1/3, linetype="dashed", 
                  color = "red", size=1) +
       ylab("B Allele frequency") + 
       theme(
