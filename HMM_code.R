@@ -135,7 +135,7 @@ setGeneMapping <- function(site, txdb,
 
 }
 
-calAlleleBoundaries <- function(r.sub, n.sc.sub,
+calAlleleBoundaries <- function(r.sub, n.sc.sub, snps,
                                 min.traverse = 3, t = 1e-6, pd = 0.1, pn = 0.45, 
                                 min.num.snps = 5, trim = 0.1, verbose = TRUE){
   
@@ -235,24 +235,25 @@ calAlleleBoundaries <- function(r.sub, n.sc.sub,
     return()
   }
   
-  HMM_region <- lapply(names(tbv), function(ti) {
+  HMM_info <- lapply(names(tbv), function(ti) {
     
     bound.snps.new <- names(bound.snps.cont)[bound.snps.cont == ti]
     
     ## trim
     bound.snps.new <- bound.snps.new[1:round(length(bound.snps.new)-length(bound.snps.new)*trim)]
     
-    if(verbose) {
-      cat('SNPS AFFECTED BY DELETION/LOH: \n')
-      cat(bound.snps.new)
-      cat("\n\n")
-    }
+    #if(verbose) {
+    #  cat('SNPS AFFECTED BY DELETION/LOH: \n')
+    #  cat(bound.snps.new)
+    #  cat("\n\n")
+    #}
     
     return(bound.snps.new)
     
   })
-    
-  return(HMM_region)
+  HMM_region <- do.call("c", lapply(HMM_info, function(bs) range(snps[bs])))
+  
+  return(list("Info" = HMM_info, "Region" = HMM_region))
 
 }
 
@@ -296,6 +297,7 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
   
   require(ggplot2)
   require(reshape2)
+  require(gridExtra)
   
   if(setWidths) {
     widths <- sapply(chrs, function(chr) {
@@ -387,7 +389,6 @@ plotAlleleProfile <- function(r.sub, n.sc.sub,
   if(returnPlot) {
     return(plist)
   } else {
-    require(gridExtra)
     do.call("grid.arrange", c(plist, ncol=length(plist)))
     ##print(p)
   }
