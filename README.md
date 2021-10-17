@@ -85,3 +85,36 @@ GRanges object with 24 ranges and 0 metadata columns:
   -------
   seqinfo: 24 sequences from an unspecified genome; no seqlengths
 ```
+
+## Update (2021/10/16):
+```
+source("script/infercnv_allele.R")
+file_name <- c("MGH36","MGH53", "MGH54")
+
+res = list()
+for(i in file_name){
+  
+  if(file_name == "MGH36"){
+    ref_group_names = "Microglia/Macrophage" 
+  }
+  if(file_name %in% c("MGH53", "MGH54")){
+    ref_group_names = c("Microglia/Macrophage","Oligodendrocytes (non-malignant)") 
+  }
+  
+  test <- CreateInfercnvAlleleObject(allele_counts_matrix = paste0("processed_data/",i,".alt.dense.matrix"),
+                                     coverage_counts_matrix = paste0("processed_data/",i,".tot.dense.matrix"),
+                                     ref_annotation_file = "gencode_v19_gene_pos.txt",
+                                     sample_annotation_file = paste0("processed_data/",i,".cell_types"),
+                                     ref_group_names = ref_group_names,
+                                     rowname_by = "::")
+  test <- setAlleleMatrix(test, het.deviance.threshold = 0.1)
+  test <- calAlleleBoundaries(test, distance_method = "Filter_threshold")
+  plot_allele(test, name_to_plot = paste0(i,"_HMM_oct_seventeen_Filter_threshold.pdf"))
+  test <- calAlleleBoundaries(test, distance_method = "Remove_NA")
+  plot_allele(test, name_to_plot = paste0(i,"_HMM_oct_seventeen_Remove_NA.pdf"))
+  test <- calAlleleBoundaries(test, distance_method = "HB")
+  plot_allele(test, name_to_plot = paste0(i,"_HMM_oct_seventeen_HB.pdf"))
+  
+  res[[i]] <- test
+}
+```
