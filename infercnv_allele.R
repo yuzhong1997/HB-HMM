@@ -292,6 +292,9 @@ calAlleleBoundaries <- function(infercnv_allele_obj,
     mat.smooth <- apply(mat.tot, 2, caTools::runmean, k=31)
     flog.info("Starting calculate distance ...")
     d <- dist(t(mat.smooth), method = "euclidean") # too slow
+    d[is.na(d)] <- 0
+    d[is.nan(d)] <- 0
+    d[is.infinite(d)] <- 0
   }
 
   flog.info("Starting calculate Hierarchical Clustering ...")
