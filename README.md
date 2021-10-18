@@ -2,7 +2,7 @@
 Extract the candidates of SNPs caused by deletion/LOH events using HMM model
 
 ## Update (2021/10/16):
-### codes for running
+### Main codes:
 ```
 source("script/infercnv_allele.R")
 file_name <- c("MGH36","MGH53", "MGH54")
@@ -55,6 +55,16 @@ for(i in file_name_2){
   res_2[[i]] <- test
 }
 ```
+
+### MGH60 sample using Filter_threshold method:
+![alt text](sample_fig/MGH60_HMM_oct_seventeen_Filter_threshold.jpg "MGH60_ft")
+
+### MGH60 sample using Remove_NA method:
+![alt text](sample_fig/MGH60_HMM_oct_seventeen_Remove_NA.jpg "MGH60_rNA")
+
+### MGH60 sample using HB method:
+![alt text](sample_fig/MGH60_HMM_oct_seventeen_HB.jpg "MGH60_hb")
+
 ### Running logs for file_name_2 ("MGH97","MGH60", "MGH93")
 ```
 INFO [2021-10-17 22:31:52] Parsing matrix: processed_data/MGH97.alt.dense.matrix ...
@@ -229,5 +239,4 @@ INFO [2021-10-17 22:50:54] Smoothing sample means for trend lines ...
 INFO [2021-10-17 22:50:57] Making HMM prediction plot ...
 INFO [2021-10-17 22:51:17] Done!
 ```
-### MGH60 sample using Filter_threshold method:
-![alt text](sample_fig/MGH60_HMM_oct_seventeen_Filter_threshold.jpg "MGH60_ft")
+
