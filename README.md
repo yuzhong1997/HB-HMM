@@ -55,6 +55,23 @@ for(i in file_name_2){
   res_2[[i]] <- test
 }
 ```
+### MGH36 sample using Filter_threshold method:
+![alt text](sample_fig/MGH36_HMM_oct_seventeen_Filter_threshold.jpg "MGH36_ft")
+
+### MGH36 sample using Remove_NA method:
+![alt text](sample_fig/MGH36_HMM_oct_seventeen_Remove_NA.jpg "MGH36_rNA")
+
+### MGH36 sample using HB method:
+![alt text](sample_fig/MGH36_HMM_oct_seventeen_HB.jpg "MGH36_hb")
+
+### MGH53 sample using Filter_threshold method:
+![alt text](sample_fig/MGH53_HMM_oct_seventeen_Filter_threshold.jpg "MGH53_ft")
+
+### MGH53 sample using Remove_NA method:
+![alt text](sample_fig/MGH53_HMM_oct_seventeen_Remove_NA.jpg "MGH53_rNA")
+
+### MGH53 sample using HB method:
+![alt text](sample_fig/MGH53_HMM_oct_seventeen_HB.jpg "MGH53_hb")
 
 ### MGH60 sample using Filter_threshold method:
 ![alt text](sample_fig/MGH60_HMM_oct_seventeen_Filter_threshold.jpg "MGH60_ft")
