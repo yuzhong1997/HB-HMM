@@ -65,6 +65,24 @@ for(i in file_name_2){
 ### MGH60 sample using HB method:
 ![alt text](sample_fig/MGH60_HMM_oct_seventeen_HB.jpg "MGH60_hb")
 
+### MGH93 sample using Filter_threshold method:
+![alt text](sample_fig/MGH93_HMM_oct_seventeen_Filter_threshold.jpg "MGH93_ft")
+
+### MGH93 sample using Remove_NA method:
+![alt text](sample_fig/MGH93_HMM_oct_seventeen_Remove_NA.jpg "MGH93_rNA")
+
+### MGH93 sample using HB method:
+![alt text](sample_fig/MGH93_HMM_oct_seventeen_HB.jpg "MGH93_hb")
+
+### MGH97 sample using Filter_threshold method:
+![alt text](sample_fig/MGH97_HMM_oct_seventeen_Filter_threshold.jpg "MGH97_ft")
+
+### MGH97 sample using Remove_NA method:
+![alt text](sample_fig/MGH97_HMM_oct_seventeen_Remove_NA.jpg "MGH97_rNA")
+
+### MGH97 sample using HB method:
+![alt text](sample_fig/MGH97_HMM_oct_seventeen_HB.jpg "MGH97_hb")
+
 ### Running logs for file_name_2 ("MGH97","MGH60", "MGH93")
 ```
 INFO [2021-10-17 22:31:52] Parsing matrix: processed_data/MGH97.alt.dense.matrix ...
