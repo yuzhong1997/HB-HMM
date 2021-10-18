@@ -94,10 +94,10 @@ file_name <- c("MGH36","MGH53", "MGH54")
 res = list()
 for(i in file_name){
   
-  if(file_name == "MGH36"){
+  if(i == "MGH36"){
     ref_group_names = "Microglia/Macrophage" 
   }
-  if(file_name %in% c("MGH53", "MGH54")){
+  if(i %in% c("MGH53", "MGH54")){
     ref_group_names = c("Microglia/Macrophage","Oligodendrocytes (non-malignant)") 
   }
   
