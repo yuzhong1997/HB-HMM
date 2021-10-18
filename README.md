@@ -64,6 +64,7 @@ for(i in file_name_2){
 ### MGH36 sample using HB method:
 ![alt text](sample_fig/MGH36_HMM_oct_seventeen_HB.jpg "MGH36_hb")
 
+
 ### MGH53 sample using Filter_threshold method:
 ![alt text](sample_fig/MGH53_HMM_oct_seventeen_Filter_threshold.jpg "MGH53_ft")
 
@@ -72,6 +73,17 @@ for(i in file_name_2){
 
 ### MGH53 sample using HB method:
 ![alt text](sample_fig/MGH53_HMM_oct_seventeen_HB.jpg "MGH53_hb")
+
+
+### MGH54 sample using Filter_threshold method:
+![alt text](sample_fig/MGH54_HMM_oct_seventeen_Filter_threshold.jpg "MGH54_ft")
+
+### MGH54 sample using Remove_NA method:
+![alt text](sample_fig/MGH54_HMM_oct_seventeen_Remove_NA.jpg "MGH54_rNA")
+
+### MGH54 sample using HB method:
+![alt text](sample_fig/MGH54_HMM_oct_seventeen_HB.jpg "MGH54_hb")
+
 
 ### MGH60 sample using Filter_threshold method:
 ![alt text](sample_fig/MGH60_HMM_oct_seventeen_Filter_threshold.jpg "MGH60_ft")
@@ -82,6 +94,7 @@ for(i in file_name_2){
 ### MGH60 sample using HB method:
 ![alt text](sample_fig/MGH60_HMM_oct_seventeen_HB.jpg "MGH60_hb")
 
+
 ### MGH93 sample using Filter_threshold method:
 ![alt text](sample_fig/MGH93_HMM_oct_seventeen_Filter_threshold.jpg "MGH93_ft")
 
@@ -90,6 +103,7 @@ for(i in file_name_2){
 
 ### MGH93 sample using HB method:
 ![alt text](sample_fig/MGH93_HMM_oct_seventeen_HB.jpg "MGH93_hb")
+
 
 ### MGH97 sample using Filter_threshold method:
 ![alt text](sample_fig/MGH97_HMM_oct_seventeen_Filter_threshold.jpg "MGH97_ft")
